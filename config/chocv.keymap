@@ -10,6 +10,11 @@
 
 &soft_off { hold-time-ms = <5000>; };
 
+&lt {
+    quick-tap-ms = <150>;
+    tapping-term-ms = <250>;
+};
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -133,10 +138,10 @@
             //             | CTL | ALT |  ENT | SPC | GUI  | CTL |
 
             bindings = <
-&kp Q        &kp W       &kp E           &kp R        &kp T            &kp Y         &kp U        &kp I            &kp O       &kp P
-&hm LCTRL A  &hm LALT S  &hm LEFT_GUI D  &hm LSHFT F  &kp G            &kp H         &hm RSHFT J  &hm RIGHT_GUI K  &hm LALT L  &hm RCTRL SINGLE_QUOTE
-&kp Z        &kp X       &kp C           &kp V        &kp B            &kp N         &kp M        &kp COMMA        &kp DOT     &kp FSLH
-&kp LCTRL    &lt 2 TAB   &lt 1 SPACE                  &lt 2 BACKSPACE  &lt 1 DELETE  &kp RCTRL
+  &kp Q        &kp W       &kp E           &kp R        &kp T          &kp Y            &kp U         &kp I            &kp O       &kp P
+  &hm LCTRL A  &hm LALT S  &hm LEFT_GUI D  &hm LSHFT F  &kp G          &kp H            &hm RSHFT J   &hm RIGHT_GUI K  &hm LALT L  &hm RCTRL SINGLE_QUOTE
+  &kp Z        &kp X       &kp C           &kp V        &kp B          &kp N            &kp M         &kp COMMA        &kp DOT     &kp FSLH
+                           &kp LCTRL       &lt 2 TAB    &lt 1 SPACE    &lt 2 BACKSPACE  &lt 1 DELETE  &kp RCTRL
             >;
         };
 
@@ -148,10 +153,10 @@
             //             | CTL | ALT |  ENT | SPC | GUI  | CTL |
 
             bindings = <
-&kp N1              &kp N2           &kp N3           &kp N4             &kp N5      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp UNDER       &kp PLUS            &kp TILDE
-&hm LCTRL NUMBER_6  &hm LEFT_ALT N7  &hm LEFT_GUI N8  &hm LEFT_SHIFT N9  &kp N0      &kp LEFT_BRACKET      &hm RSHFT RIGHT_BRACKET  &hm RCMD MINUS  &hm LEFT_ALT EQUAL  &hm RCTRL GRAVE
-&kp PLUS            &kp MINUS        &kp ASTERISK     &kp SLASH          &kp KP_DOT  &kp LEFT_BRACE        &kp RIGHT_BRACE          &kp SEMICOLON   &kp COLON           &kp BACKSLASH
-&trans              &mo 3            &trans                              &mo 3       &trans                &trans
+  &kp N1              &kp N2           &kp N3           &kp N4             &kp N5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp UNDER       &kp PLUS            &kp TILDE
+  &hm LCTRL NUMBER_6  &hm LEFT_ALT N7  &hm LEFT_GUI N8  &hm LEFT_SHIFT N9  &kp N0        &kp LEFT_BRACKET      &hm RSHFT RIGHT_BRACKET  &hm RCMD MINUS  &hm LEFT_ALT EQUAL  &hm RCTRL GRAVE
+  &kp PLUS            &kp MINUS        &kp ASTERISK     &kp SLASH          &kp KP_DOT    &kp LEFT_BRACE        &kp RIGHT_BRACE          &kp SEMICOLON   &kp COLON           &kp BACKSLASH
+                                       &trans           &mo 3              &trans        &mo 3                 &trans                   &trans
             >;
         };
 
@@ -163,19 +168,19 @@
             //             | CTL | ALT |  ENT | SPC | GUI  | CTL |
 
             bindings = <
-&mt LEFT_SHIFT PG_UP  &mt LEFT_ALT HOME  &mt LC(LEFT_SHIFT) UP_ARROW  &mt LEFT_ALT END  &kp LS(LA(LC(BACKSLASH)))  &trans      &kp F9        &kp F10       &kp F11          &kp F12
-&mt LCTRL PAGE_DOWN   &kp LEFT_ARROW     &kp DOWN                     &kp RIGHT         &kp BACKSPACE              &kp DELETE  &hs LSHFT F5  &hm LCTRL F6  &hm LEFT_ALT F7  &hm LEFT_GUI F8
-&kp LC(Z)             &kp LC(X)          &kp LC(C)                    &kp LC(V)         &kp LS(LC(K))              &trans      &kp F1        &kp F2        &kp F3           &kp F4
-&trans                &trans             &mo 3                                          &trans                     &mo 3       &trans
+  &mt LEFT_SHIFT PG_UP  &mt LEFT_ALT HOME  &mt LC(LEFT_SHIFT) UP_ARROW  &mt LEFT_ALT END  &kp LS(LA(LC(BACKSLASH)))    &trans      &kp F9        &kp F10       &kp F11          &kp F12
+  &mt LCTRL PAGE_DOWN   &kp LEFT_ARROW     &kp DOWN                     &kp RIGHT         &kp BACKSPACE                &kp DELETE  &hs LSHFT F5  &hm LCTRL F6  &hm LEFT_ALT F7  &hm LEFT_GUI F8
+  &kp LC(Z)             &kp LC(X)          &kp LC(C)                    &kp LC(V)         &kp LS(LC(K))                &trans      &kp F1        &kp F2        &kp F3           &kp F4
+                                           &trans                       &trans            &mo 3                        &trans      &mo 3         &trans
             >;
         };
 
         Admin {
             bindings = <
-&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &trans  &trans  &trans  &trans  &bootloader
-&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &trans  &trans  &trans  &trans  &bt BT_CLR_ALL
-&bt BT_CLR     &trans         &trans         &trans         &trans         &trans  &trans  &trans  &trans  &sys_reset
-&trans         &trans         &trans                        &trans         &trans  &trans
+  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4     &trans  &trans  &trans  &trans  &bootloader
+  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4    &trans  &trans  &trans  &trans  &bt BT_CLR_ALL
+  &bt BT_CLR     &trans         &trans         &trans         &trans           &trans  &trans  &trans  &trans  &sys_reset
+                                &trans         &trans         &trans           &trans  &trans  &trans
             >;
         };
     };
