@@ -102,6 +102,17 @@
             bindings = <&kp GLOBE>;
             key-positions = <4 5>;
         };
+
+        toggle_win {
+            bindings = <&tog 1>;
+            key-positions = <0 9>;
+        };
+
+        screenshot_win {
+            bindings = <&kp LS(LG(S))>;
+            key-positions = <0 11>;
+            layers = <1>;
+        };
     };
 
     behaviors {
@@ -128,6 +139,42 @@
             flavor = "balanced";
             require-prior-idle-ms = <0>;
         };
+
+        esc: esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ESC";
+            #binding-cells = <0>;
+            bindings = <&kp Q>, <&kp ESC>;
+
+            tapping-term-ms = <200>;
+        };
+
+        tab: tab {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAB";
+            #binding-cells = <0>;
+            bindings = <&mt LCTRL ENTER>, <&kp TAB>;
+
+            tapping-term-ms = <250>;
+        };
+
+        comma_semicolon: comma_semicolon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_SEMICOLON";
+            bindings = <&kp COMMA>, <&kp SEMICOLON>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        period_colon: period_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "PERIOD_COLON";
+            bindings = <&kp PERIOD>, <&kp COLON>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     macros {
@@ -143,19 +190,22 @@
         compatible = "zmk,keymap";
 
         base {
-            // -----------------------------------------------------------------------------------------
-            // |  Q  |  W  |  E  |  R  |  T   |  Y  |  U   |  I  |  O  |  P  |
-            // |  A  |  S  |  D  |  F  |  G   |  H  |  J   |  K  |  L  |  ;  |
-            // |  Z  |  X  |  C  |  V  |  B   |  N  |  M   |  ,  |  .  |  /  |
-            //             | CTL | ALT |  ENT | SPC | GUI  | CTL |
-
             bindings = <
   &kp Q        &kp W       &kp E           &kp R        &kp T          &kp Y            &kp U         &kp I            &kp O       &kp P
   &hm LCTRL A  &hm LALT S  &hm LEFT_GUI D  &hm LSHFT F  &kp G          &kp H            &hm RSHFT J   &hm RIGHT_GUI K  &hm LALT L  &hm RCTRL SINGLE_QUOTE
   &kp Z        &kp X       &kp C           &kp V        &kp B          &kp N            &kp M         &kp COMMA        &kp DOT     &kp FSLH
-                           &kp GLOBE       &lt 2 TAB    &lt 1 SPACE    &lt 2 BACKSPACE  &lt 1 DELETE  &kp RCTRL
+                           &kp GLOBE       &lt 4 TAB    &lt 2 SPACE    &lt 4 BACKSPACE  &lt 2 DELETE  &kp RCTRL
             >;
         };
+
+        base_win {
+                bindings = <
+    &trans      &trans  &trans       &trans  &trans            &trans  &trans  &trans       &trans  &trans
+    &hm LGUI A  &trans  &hm LCTRL D  &trans  &trans            &trans  &trans  &hm RCTRL K  &trans  &hm RGUI SQT
+    &trans      &trans  &trans       &trans  &trans            &trans  &trans  &trans       &trans  &trans
+                        &trans       &trans          &trans    &trans          &trans       &trans
+                >;
+            };
 
         numsym {
             // -----------------------------------------------------------------------------------------
@@ -168,11 +218,19 @@
   &kp N1              &kp N2           &kp N3           &kp N4             &kp N5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp UNDER       &kp PLUS            &kp TILDE
   &hm LCTRL NUMBER_6  &hm LEFT_ALT N7  &hm LEFT_GUI N8  &hm LEFT_SHIFT N9  &kp N0        &kp LEFT_BRACKET      &hm RSHFT RIGHT_BRACKET  &hm RCMD MINUS  &hm LEFT_ALT EQUAL  &hm RCTRL GRAVE
   &kp PLUS            &kp MINUS        &kp ASTERISK     &kp SLASH          &kp KP_DOT    &kp LEFT_BRACE        &kp RIGHT_BRACE          &kp SEMICOLON   &kp COLON           &kp BACKSLASH
-                                       &trans           &mo 3              &trans        &mo 3                 &trans                   &trans
+                                       &trans           &mo 6              &trans        &mo 6                 &trans                   &trans
             >;
         };
 
-        nav {
+        numsym_win {
+            bindings = <
+&trans             &trans  &trans        &trans  &trans            &trans  &trans  &trans           &trans  &trans
+&hm LGUI NUMBER_6  &trans  &hm LCTRL N8  &trans  &trans            &trans  &trans  &hm RCTRL MINUS  &trans  &hm RGUI GRAVE
+&trans             &trans  &trans        &trans  &trans            &trans  &trans  &trans           &trans  &trans
+                           &trans        &trans          &trans    &trans          &trans           &trans
+            >;
+        };
+        navfunc {
             // -----------------------------------------------------------------------------------------
             // |BTCLR| RST |     |      |     |      | PGDN |  UP  | PGUP |      |
             // | BT0 |CMENU|     |      |     | HOME | LEFT | DOWN |RIGHT | END  |
@@ -183,7 +241,16 @@
   &mt LEFT_SHIFT PG_UP  &mt LEFT_ALT HOME  &mt LG(LEFT_SHIFT) UP_ARROW  &mt LEFT_ALT END  &kp LS(LA(LC(BACKSLASH)))    &trans      &kp F9        &kp F10          &kp F11          &kp F12
   &mt LALT PAGE_DOWN    &kp LEFT_ARROW     &kp DOWN                     &kp RIGHT         &kp BACKSPACE                &kp DELETE  &hs LSHFT F5  &hm LEFT_GUI F6  &hm LEFT_ALT F7  &hm LCTRL F8
   &kp LG(Z)             &kp LG(X)          &kp LG(C)                    &kp LG(V)         &kp LS(LG(K))                &trans      &kp F1        &kp F2           &kp F3           &kp F4
-                                           &trans                       &trans            &mo 3                        &trans      &mo 3         &trans
+                                           &trans                       &trans            &mo 6                        &trans      &mo 6         &trans
+            >;
+        };
+
+        navfunc_win {
+            bindings = <
+&trans               &mt LALT HOME  &trans     &mt LALT END  &trans                   &trans  &trans  &trans        &trans  &trans
+&hm LCTRL PAGE_DOWN  &trans         &trans     &trans        &trans                   &trans  &trans  &hm RCTRL F6  &trans  &hm RGUI F8
+&kp LC(Z)            &kp LC(X)      &kp LC(C)  &kp LC(V)     &kp LS(LC(K))            &trans  &trans  &trans        &trans  &trans
+                     &trans         &trans     &trans                       &trans    &trans          &trans
             >;
         };
 
@@ -194,6 +261,20 @@
   &bt BT_CLR     &trans         &trans         &out OUT_TOG   &ext_power EP_TOG    &trans       &trans  &trans  &trans  &sys_reset
                                 &trans         &trans         &trans               &trans       &trans  &trans
             >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        num_sym_win {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+
+        nav_func_win {
+            if-layers = <1 4>;
+            then-layer = <5>;
         };
     };
 };
