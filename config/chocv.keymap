@@ -192,8 +192,6 @@
         };
     };
 
-    };
-
     macros {
         jsdoc: jsdoc {
             compatible = "zmk,behavior-macro";
