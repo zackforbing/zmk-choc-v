@@ -121,66 +121,6 @@
     };
 
     behaviors {
-        hm: HOMEROW_MODS {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            quick-tap-ms = <150>;
-            flavor = "balanced";
-            require-prior-idle-ms = <250>;
-        };
-
-        hs: HOMEROW_SHIFT {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_SHIFT";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <100>;
-            flavor = "balanced";
-            require-prior-idle-ms = <0>;
-        };
-
-        esc: esc {
-            compatible = "zmk,behavior-tap-dance";
-            label = "ESC";
-            #binding-cells = <0>;
-            bindings = <&kp Q>, <&kp ESC>;
-
-            tapping-term-ms = <200>;
-        };
-
-        tab: tab {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAB";
-            #binding-cells = <0>;
-            bindings = <&mt LCTRL ENTER>, <&kp TAB>;
-
-            tapping-term-ms = <250>;
-        };
-
-        comma_semicolon: comma_semicolon {
-            compatible = "zmk,behavior-mod-morph";
-            label = "COMMA_SEMICOLON";
-            bindings = <&kp COMMA>, <&kp SEMICOLON>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        period_colon: period_colon {
-            compatible = "zmk,behavior-mod-morph";
-            label = "PERIOD_COLON";
-            bindings = <&kp PERIOD>, <&kp COLON>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         hml: HOMEROW_L_MODS {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_L_MODS";
@@ -269,8 +209,8 @@
         base {
             bindings = <
   &kp Q        &kp W       &kp E           &kp R        &kp T          &kp Y            &kp U         &kp I            &kp O       &kp P
-  &hm LCTRL A  &hm LALT S  &hm LEFT_GUI D  &hm LSHFT F  &kp G          &kp H            &hm RSHFT J   &hm RIGHT_GUI K  &hm LALT L  &hm RCTRL SINGLE_QUOTE
-  &kp Z        &kp X       &kp C           &kp V        &kp B          &kp N            &kp M         &kp COMMA        &kp DOT     &kp FSLH
+  &hml LCTRL A  &hml LALT S  &hml LEFT_GUI D  &hsl LSHFT F  &kp G          &kp H            &hsr RSHFT J   &hmr RIGHT_GUI K  &hmr LALT L  &hmr RCTRL SINGLE_QUOTE
+  &kp Z        &kp X       &kp C           &kp V        &kp B          &kp N            &kp M         &com_scln        &prd_cln     &kp FSLH
                            &kp GLOBE       &lt 4 TAB    &lt 2 SPACE    &lt 4 BACKSPACE  &lt 2 DELETE  &kp RCTRL
             >;
         };
@@ -278,7 +218,7 @@
         base_win {
             bindings = <
   &trans      &trans  &trans       &trans  &trans    &trans  &trans  &trans       &trans  &trans
-  &hm LGUI A  &trans  &hm LCTRL D  &trans  &trans    &trans  &trans  &hm RCTRL K  &trans  &hm RGUI SQT
+  &hml LGUI A  &trans  &hml LCTRL D  &trans  &trans    &trans  &trans  &hm RCTRL K  &trans  &hmr RGUI SQT
   &trans      &trans  &trans       &trans  &trans    &trans  &trans  &trans       &trans  &trans
                       &trans       &trans  &trans    &trans  &trans  &trans
             >;
@@ -293,7 +233,7 @@
 
             bindings = <
   &kp N1              &kp N2           &kp N3           &kp N4             &kp N5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp UNDER       &kp PLUS            &kp TILDE
-  &hm LCTRL NUMBER_6  &hm LEFT_ALT N7  &hm LEFT_GUI N8  &hm LEFT_SHIFT N9  &kp N0        &kp LEFT_BRACKET      &hm RSHFT RIGHT_BRACKET  &hm RCMD MINUS  &hm LEFT_ALT EQUAL  &hm RCTRL GRAVE
+  &hml LCTRL NUMBER_6  &hml LEFT_ALT N7  &hml LEFT_GUI N8  &hsl LEFT_SHIFT N9  &kp N0        &kp LEFT_BRACKET      &hsr RSHFT RIGHT_BRACKET  &hmr RCMD MINUS  &hmr LEFT_ALT EQUAL  &hmr RCTRL GRAVE
   &kp PLUS            &kp MINUS        &kp ASTERISK     &kp SLASH          &kp KP_DOT    &kp LEFT_BRACE        &kp RIGHT_BRACE          &kp SEMICOLON   &kp COLON           &kp BACKSLASH
                                        &trans           &mo 6              &trans        &mo 6                 &trans                   &trans
             >;
@@ -302,7 +242,7 @@
         numsym_win {
             bindings = <
   &trans             &trans  &trans        &trans  &trans    &trans  &trans  &trans           &trans  &trans
-  &hm LGUI NUMBER_6  &trans  &hm LCTRL N8  &trans  &trans    &trans  &trans  &hm RCTRL MINUS  &trans  &hm RGUI GRAVE
+  &hml LGUI NUMBER_6  &trans  &hml LCTRL N8  &trans  &trans    &trans  &trans  &hmr RCTRL MINUS  &trans  &hmr RGUI GRAVE
   &trans             &trans  &trans        &trans  &trans    &trans  &trans  &trans           &trans  &trans
                              &trans        &trans  &trans    &trans  &trans  &trans
             >;
@@ -317,7 +257,7 @@
 
             bindings = <
   &mt LEFT_SHIFT PG_UP  &mt LEFT_ALT HOME  &mt LG(LEFT_SHIFT) UP_ARROW  &mt LEFT_ALT END  &kp LS(LA(LC(BACKSLASH)))    &trans      &kp F9        &kp F10          &kp F11          &kp F12
-  &mt LALT PAGE_DOWN    &kp LEFT_ARROW     &kp DOWN                     &kp RIGHT         &kp BACKSPACE                &kp DELETE  &hs LSHFT F5  &hm LEFT_GUI F6  &hm LEFT_ALT F7  &hm LCTRL F8
+  &mt LALT PAGE_DOWN    &kp LEFT_ARROW     &kp DOWN                     &kp RIGHT         &kp BACKSPACE                &kp DELETE  &hsr LSHFT F5  &hmr LEFT_GUI F6  &hmr LEFT_ALT F7  &hmr LCTRL F8
   &kp LG(Z)             &kp LG(X)          &kp LG(C)                    &kp LG(V)         &kp LS(LG(K))                &trans      &kp F1        &kp F2           &kp F3           &kp F4
                                            &trans                       &trans            &mo 6                        &trans      &mo 6         &trans
             >;
@@ -326,7 +266,7 @@
         navfunc_win {
             bindings = <
   &trans               &mt LALT HOME  &trans     &mt LALT END  &trans           &trans  &trans  &trans        &trans  &trans
-  &hm LCTRL PAGE_DOWN  &trans         &trans     &trans        &trans           &trans  &trans  &hm RCTRL F6  &trans  &hm RGUI F8
+  &hm LCTRL PAGE_DOWN  &trans         &trans     &trans        &trans           &trans  &trans  &hmr RCTRL F6  &trans  &hmr RGUI F8
   &kp LC(Z)            &kp LC(X)      &kp LC(C)  &kp LC(V)     &kp LS(LC(K))    &trans  &trans  &trans        &trans  &trans
                                       &trans     &trans        &trans           &trans  &trans  &trans
             >;
