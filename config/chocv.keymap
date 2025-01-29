@@ -264,7 +264,7 @@
         navfunc_win {
             bindings = <
   &trans               &mt LALT HOME  &trans     &mt LALT END  &trans           &trans  &trans  &trans        &trans  &trans
-  &hm LCTRL PAGE_DOWN  &trans         &trans     &trans        &trans           &trans  &trans  &hmr RCTRL F6  &trans  &hmr RGUI F8
+  &hml LCTRL PAGE_DOWN  &trans         &trans     &trans        &trans           &trans  &trans  &hmr RCTRL F6  &trans  &hmr RGUI F8
   &kp LC(Z)            &kp LC(X)      &kp LC(C)  &kp LC(V)     &kp LS(LC(K))    &trans  &trans  &trans        &trans  &trans
                                       &trans     &trans        &trans           &trans  &trans  &trans
             >;
