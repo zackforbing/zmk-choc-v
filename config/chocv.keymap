@@ -216,7 +216,7 @@
         base_win {
             bindings = <
   &trans      &trans  &trans       &trans  &trans    &trans  &trans  &trans       &trans  &trans
-  &hml LGUI A  &trans  &hml LCTRL D  &trans  &trans    &trans  &trans  &hm RCTRL K  &trans  &hmr RGUI SQT
+  &hml LGUI A  &trans  &hml LCTRL D  &trans  &trans    &trans  &trans  &hmr RCTRL K  &trans  &hmr RGUI SQT
   &trans      &trans  &trans       &trans  &trans    &trans  &trans  &trans       &trans  &trans
                       &trans       &trans  &trans    &trans  &trans  &trans
             >;
