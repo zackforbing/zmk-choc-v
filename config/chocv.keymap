@@ -131,7 +131,7 @@
             quick-tap-ms = <190>;
             flavor = "balanced";
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 33 34 29 35>;
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 33 34 29 35 10 11 12 13>;
         };
 
         hsl: HOMEROW_L_SHIFT {
@@ -144,7 +144,7 @@
             quick-tap-ms = <190>;
             flavor = "balanced";
             require-prior-idle-ms = <0>;
-            hold-trigger-key-positions = <5 15 25 6 16 26 7 8 9 9 17 18 19 27 28 34 33 29 35>;
+            hold-trigger-key-positions = <5 15 25 6 16 26 7 8 9 9 17 18 19 27 28 34 33 29 35 13 12 11 10>;
         };
 
         com_scln: comma_semicolon {
@@ -175,7 +175,7 @@
             quick-tap-ms = <190>;
             flavor = "balanced";
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 32 31 30>;
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 32 31 30 16 17 18 19>;
         };
 
         hsr: HOMEROW_R_SHIFT {
@@ -188,7 +188,7 @@
             quick-tap-ms = <190>;
             flavor = "balanced";
             require-prior-idle-ms = <0>;
-            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 31 32 30>;
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 31 32 30 16 17 18 19>;
         };
     };
 
@@ -206,19 +206,19 @@
 
         base {
             bindings = <
-  &kp Q        &kp W       &kp E           &kp R        &kp T          &kp Y            &kp U         &kp I            &kp O       &kp P
-  &hml LCTRL A  &hml LALT S  &hml LEFT_GUI D  &hsl LSHFT F  &kp G          &kp H            &hsr RSHFT J   &hmr RIGHT_GUI K  &hmr LALT L  &hmr RCTRL SINGLE_QUOTE
-  &kp Z        &kp X       &kp C           &kp V        &kp B          &kp N            &kp M         &com_scln        &pd_cln     &kp FSLH
-                           &kp GLOBE       &lt 4 TAB    &lt 2 SPACE    &lt 4 BACKSPACE  &lt 2 DELETE  &kp RCTRL
+  &kp Q         &kp W        &kp E            &kp R         &kp T          &kp Y            &kp U         &kp I             &kp O        &kp P
+  &hml LCTRL A  &hml LALT S  &hml LEFT_GUI D  &hsl LSHFT F  &kp G          &kp H            &hsr RSHFT J  &hmr RIGHT_GUI K  &hmr LALT L  &hmr RCTRL SINGLE_QUOTE
+  &kp Z         &kp X        &kp C            &kp V         &kp B          &kp N            &kp M         &com_scln         &pd_cln      &kp FSLH
+                             &kp GLOBE        &lt 4 TAB     &lt 2 SPACE    &lt 4 BACKSPACE  &lt 2 DELETE  &kp RCTRL
             >;
         };
 
         base_win {
             bindings = <
-  &trans      &trans  &trans       &trans  &trans    &trans  &trans  &trans       &trans  &trans
+  &trans       &trans  &trans        &trans  &trans    &trans  &trans  &trans        &trans  &trans
   &hml LGUI A  &trans  &hml LCTRL D  &trans  &trans    &trans  &trans  &hmr RCTRL K  &trans  &hmr RGUI SQT
-  &trans      &trans  &trans       &trans  &trans    &trans  &trans  &trans       &trans  &trans
-                      &trans       &trans  &trans    &trans  &trans  &trans
+  &trans       &trans  &trans        &trans  &trans    &trans  &trans  &trans        &trans  &trans
+                       &trans        &trans  &trans    &trans  &trans  &trans
             >;
         };
 
@@ -230,19 +230,19 @@
             //             | CTL | ALT |  ENT | SPC | GUI  | CTL |
 
             bindings = <
-  &kp N1              &kp N2           &kp N3           &kp N4             &kp N5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp UNDER       &kp PLUS            &kp TILDE
+  &kp N1               &kp N2            &kp N3            &kp N4              &kp N5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS     &kp UNDER        &kp PLUS             &kp TILDE
   &hml LCTRL NUMBER_6  &hml LEFT_ALT N7  &hml LEFT_GUI N8  &hsl LEFT_SHIFT N9  &kp N0        &kp LEFT_BRACKET      &hsr RSHFT RIGHT_BRACKET  &hmr RCMD MINUS  &hmr LEFT_ALT EQUAL  &hmr RCTRL GRAVE
-  &kp PLUS            &kp MINUS        &kp ASTERISK     &kp SLASH          &kp KP_DOT    &kp LEFT_BRACE        &kp RIGHT_BRACE          &kp SEMICOLON   &kp COLON           &kp BACKSLASH
-                                       &trans           &mo 6              &trans        &mo 6                 &trans                   &trans
+  &kp PLUS             &kp MINUS         &kp ASTERISK      &kp SLASH           &kp KP_DOT    &kp LEFT_BRACE        &kp RIGHT_BRACE           &kp SEMICOLON    &kp COLON            &kp BACKSLASH
+                                         &trans            &mo 6               &trans        &mo 6                 &trans                    &trans
             >;
         };
 
         numsym_win {
             bindings = <
-  &trans             &trans  &trans        &trans  &trans    &trans  &trans  &trans           &trans  &trans
+  &trans              &trans  &trans         &trans  &trans    &trans  &trans  &trans            &trans  &trans
   &hml LGUI NUMBER_6  &trans  &hml LCTRL N8  &trans  &trans    &trans  &trans  &hmr RCTRL MINUS  &trans  &hmr RGUI GRAVE
-  &trans             &trans  &trans        &trans  &trans    &trans  &trans  &trans           &trans  &trans
-                             &trans        &trans  &trans    &trans  &trans  &trans
+  &trans              &trans  &trans         &trans  &trans    &trans  &trans  &trans            &trans  &trans
+                              &trans         &trans  &trans    &trans  &trans  &trans
             >;
         };
 
@@ -254,19 +254,19 @@
             //             | CTL | ALT |  ENT | SPC | GUI  | CTL |
 
             bindings = <
-  &mt LEFT_SHIFT PG_UP  &mt LEFT_ALT HOME  &mt LG(LEFT_SHIFT) UP_ARROW  &mt LEFT_ALT END  &kp LS(LA(LC(BACKSLASH)))    &trans      &kp F9        &kp F10          &kp F11          &kp F12
+  &mt LEFT_SHIFT PG_UP  &mt LEFT_ALT HOME  &mt LG(LEFT_SHIFT) UP_ARROW  &mt LEFT_ALT END  &kp LS(LA(LC(BACKSLASH)))    &trans      &kp F9         &kp F10           &kp F11           &kp F12
   &mt LALT PAGE_DOWN    &kp LEFT_ARROW     &kp DOWN                     &kp RIGHT         &kp BACKSPACE                &kp DELETE  &hsr LSHFT F5  &hmr LEFT_GUI F6  &hmr LEFT_ALT F7  &hmr LCTRL F8
-  &kp LG(Z)             &kp LG(X)          &kp LG(C)                    &kp LG(V)         &kp LS(LG(K))                &trans      &kp F1        &kp F2           &kp F3           &kp F4
-                                           &trans                       &trans            &mo 6                        &trans      &mo 6         &trans
+  &kp LG(Z)             &kp LG(X)          &kp LG(C)                    &kp LG(V)         &kp LS(LG(K))                &trans      &kp F1         &kp F2            &kp F3            &kp F4
+                                           &trans                       &trans            &mo 6                        &trans      &mo 6          &trans
             >;
         };
 
         navfunc_win {
             bindings = <
-  &trans               &mt LALT HOME  &trans     &mt LALT END  &trans           &trans  &trans  &trans        &trans  &trans
+  &trans                &mt LALT HOME  &trans     &mt LALT END  &trans           &trans  &trans  &trans         &trans  &trans
   &hml LCTRL PAGE_DOWN  &trans         &trans     &trans        &trans           &trans  &trans  &hmr RCTRL F6  &trans  &hmr RGUI F8
-  &kp LC(Z)            &kp LC(X)      &kp LC(C)  &kp LC(V)     &kp LS(LC(K))    &trans  &trans  &trans        &trans  &trans
-                                      &trans     &trans        &trans           &trans  &trans  &trans
+  &kp LC(Z)             &kp LC(X)      &kp LC(C)  &kp LC(V)     &kp LS(LC(K))    &trans  &trans  &trans         &trans  &trans
+                                       &trans     &trans        &trans           &trans  &trans  &trans
             >;
         };
 
